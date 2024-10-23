@@ -1,0 +1,40 @@
+# Environment parameters
+num_seeds: 20
+seed: 42
+# Experiment Parameters
+num_iter: 2000
+# Environment utility function
+utility_function: "yelp"
+utility_function_params:
+  city: "Philadelphia"
+  min_review_count: 500
+  min_review_per_user: 90
+  collaborative_filtering_args:
+    n_factors: 30
+    n_epochs: 50
+    lr_all: 0.005
+    reg_all: 0.02
+  utility_range: [-3.0, 3.0]
+activation_function: "sigmoid"
+# Estimator to use
+estimator:
+  name: "LGPUCB"
+  delta: 0.1
+  lambda_: 0.25
+  nll_regularization_penalty: 1.0
+  beta: 1.0
+  rkhs_norm_ub: 3.0
+  kernel: "rbf"
+  kernel_params:
+    variance: 0.1
+    length_scale: 0.1
+  solver:
+    name: "LBFGS"
+    args: {}
+acquisition_functions:
+  - "max_min_lcb_no_candidates"
+  - "RUCB"
+  - "max_info_gain"
+  - "Doubler_single_estimator"
+  - "MultiSBM"
+  - "IDS"

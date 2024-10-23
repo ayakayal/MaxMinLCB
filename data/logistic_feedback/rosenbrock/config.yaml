@@ -1,0 +1,55 @@
+# Environment parameters
+feature_dim: 2
+num_arms: 100
+num_seeds: 20
+seed: 42
+domain:
+  initialization: "meshgrid"
+  params:
+    range: [[-5.0, 10.0], [-5.0, 10.0]]
+  norm_ub: null
+logging: []
+#  - "posteriors"
+#  - "update_info"
+grid_search: False
+# Environment utility function
+utility_function: "rosenbrock"
+utility_function_params:
+  param_initialization: "normal"
+  param_norm_ub: 1.0
+  utility_range: [-3.0, 3.0]
+  bias: 0.0
+  poly_degree: 4
+activation_function: "sigmoid"
+# Algorithms to test
+algorithms:
+  - name: "EmpiricalMean"
+    num_iter: 2000
+    delta: 0.1
+  - name: "LogisticUCB1"
+    num_iter: 2000
+    delta: 0.1
+    arm_norm_ub: 0.5
+  - name: "LGPUCB"
+    num_iter: 2000
+    delta: 0.1
+    lambda_: 0.25
+    nll_regularization_penalty: 1.0
+    beta: 1.0
+    kernel: "rbf"
+    rkhs_norm_ub: 3.0
+    kernel_params:
+      variance: 0.1
+      length_scale: 1.0
+    solver:
+      name: "LBFGS"
+      args: {}
+  - name: "GPRegressor"
+    num_iter: 2000
+    delta: 0.1
+    lambda_: 0.25
+    beta: 1.0
+    kernel: "rbf"
+    kernel_params:
+      variance: 0.1
+      length_scale: 0.1

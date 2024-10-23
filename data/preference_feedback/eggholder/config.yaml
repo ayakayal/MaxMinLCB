@@ -1,0 +1,44 @@
+# Environment parameters
+feature_dim: 2
+num_arms: 100
+num_seeds: 20
+seed: 42
+domain:
+  initialization: "meshgrid"
+  params:
+    range: [[-100.0, 100.0], [-100.0, 100.0]]
+  norm_ub: null
+# Experiment Parameters
+num_iter: 2000
+# Environment utility function
+utility_function: "eggholder"
+utility_function_params:
+  param_initialization: "normal"
+  param_norm_ub: 1.0
+  utility_range: [-3.0, 3.0]
+  bias: 0.0
+  poly_degree: 1
+activation_function: "sigmoid"
+# Estimator to use
+estimator:
+  name: "LGPUCB"
+  delta: 0.1
+  lambda_: 0.25  # 0.25
+  nll_regularization_penalty: 0.1
+  beta: 1.0
+  rkhs_norm_ub: 1.0
+  kernel: "rbf"
+  kernel_params:
+    variance: 1.0
+    length_scale: 1.0
+  solver:
+    name: "LBFGS"
+    args: {}
+acquisition_functions:
+  - "max_min_lcb_no_candidates"
+  - "RUCB"
+  - "max_info_gain"
+  - "Doubler_single_estimator"
+  - "MultiSBM"
+  - "IDS"
+  - "Sparring"
