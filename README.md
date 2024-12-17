@@ -46,3 +46,18 @@ We provide the configurations used in the paper in the `data/preference_feedback
 
 To reproduce the figures and tables in the paper, run the `notebooks/visualize_logistic.ipynb`
 and `notebooks/visualize_preference.ipynb` notebooks respectively.
+
+# References and Contact
+With any question about the code, please reach out to [Barna Pásztor](mailto:barna.pasztor@ai.ethz.ch) and,
+if you find our code useful for your research, cite our work as follows:
+```bibtex
+@misc{pasztor2024banditspreferencefeedbackstackelberg,
+      title={Bandits with Preference Feedback: A Stackelberg Game Perspective}, 
+      author={Barna Pásztor and Parnian Kassraie and Andreas Krause},
+      year={2024},
+      eprint={2406.16745},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2406.16745}, 
+}
+```
